@@ -55,7 +55,7 @@ export default function Login() {
 
   return (
     <>
-      <section className=" dark:bg-gray-900 w-1/2 mx-auto bg-gray-50 shadow p-3 my-3">
+      <section className="dark:bg-gray-900 w-full md:w-1/2 mx-auto bg-gray-50 shadow p-3 my-3">
         <h1 className="text-3xl font-bold my-3">Login Now</h1>
 
         {errorMsg && <div className="bg-red-300 p-3 rounded-md my-2">{errorMsg}</div>}

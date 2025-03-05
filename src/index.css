@@ -24,6 +24,19 @@ body{
     color: var(--rating-color);
 }
 
+.slider{
+    .slick-dots {
+        bottom: -30px;
+      }
+      .slick-dots li button:before {
+        color: #4CAF50; /* لون النقاط */
+        font-size: 12px;
+      }
+      .slick-dots li.slick-active button:before {
+        color: #4CAF50; /* لون النقطة النشطة */
+      }
+}
+
 a , a:hover{
     color: black;
     text-decoration: none;

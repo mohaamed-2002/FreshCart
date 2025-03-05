@@ -17,7 +17,7 @@ import img3 from './../../assets/images/slider-image-3.jpeg'
 
 export default function MainSlider() {
   return (
-    <div className='row p-5'>
+    <div className='row p-5 slider'>
       <div className='w-3/4'>
       <Slider {...settings}>
         <div>

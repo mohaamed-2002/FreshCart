@@ -15,34 +15,37 @@ const settings = {
         slidesToShow: 4,
         slidesToScroll: 1,
         infinite: true,
-        dots: true
-      }
+        dots: true,
+      },
     },
     {
-      breakpoint: 1024,
+      breakpoint: 992,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        infinite: true,
+        dots: true,
+      },
+    },
+    {
+      breakpoint: 768,
       settings: {
         slidesToShow: 2,
         slidesToScroll: 1,
         infinite: true,
-        dots: true
-      }
+        dots: true,
+      },
     },
     {
-      breakpoint: 600,
+      breakpoint: 576,
       settings: {
         slidesToShow: 1,
-        slidesToScroll: 2,
-        initialSlide: 1
-      }
+        slidesToScroll: 1,
+        infinite: true,
+        dots: true,
+      },
     },
-    {
-      breakpoint: 480,
-      settings: {
-        slidesToShow: 1,
-        slidesToScroll: 1
-      }
-    }
-  ]
+  ],
 };
 
 export default function CategorySlider() {
@@ -65,16 +68,21 @@ export default function CategorySlider() {
   
 
   return (
-    <div className='my-8 mx-1'>
+    <div className="my-8 mx-1 slider">
       <Slider {...settings}>
-        {categories.map((Category)=>(
-      <div key={Category._id}>
-        <img src={Category.image} className='w-full h-[320px]' alt={Category.name} />
-        <h4 className='m-3 font-semibold'>{Category.name}</h4>
-      </div>
+        {categories.map((Category) => (
+          <div key={Category._id} className="px-2">
+            <img
+              src={Category.image}
+              className="w-full h-[320px] object-cover rounded-lg"
+              alt={Category.name}
+            />
+            <h4 className="mt-3 text-center font-semibold text-gray-800">
+              {Category.name}
+            </h4>
+          </div>
         ))}
-
-    </Slider>
+      </Slider>
     </div>
-  )
+  );
 }

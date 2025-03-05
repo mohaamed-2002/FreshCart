@@ -1,23 +1,23 @@
-import React, { useContext, useState } from 'react'
-import { FaFacebook, FaInstagram, FaLinkedin, FaTiktok, FaYoutube } from 'react-icons/fa'
-import { Link, NavLink } from 'react-router-dom'
-import logo from '../../assets/images/freshcart-logo.svg'
+import React, { useContext, useState } from 'react';
+import { FaFacebook, FaInstagram, FaLinkedin, FaTiktok, FaYoutube } from 'react-icons/fa';
+import { Link, NavLink } from 'react-router-dom';
+import logo from '../../assets/images/freshcart-logo.svg';
 import { tokenContext } from './../../Context/TokenContext';
 import { useNavigate } from 'react-router-dom';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
 import { CartContext } from '../../Context/CartContext';
 
 export default function Navbar() {
-  const { numOfCartItems } = useContext(CartContext)
-  const { token, setToken } = useContext(tokenContext)
-  const navigate = useNavigate()
+  const { numOfCartItems } = useContext(CartContext);
+  const { token, setToken } = useContext(tokenContext);
+  const navigate = useNavigate();
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   function logoutUser() {
-    localStorage.removeItem('token')
-    setToken(null)
-    navigate('/login')
+    localStorage.removeItem('token');
+    setToken(null);
+    navigate('/login');
   }
 
   return (
@@ -38,32 +38,43 @@ export default function Navbar() {
           </svg>
         </button>
 
+        {isMenuOpen && token ? (
+          <div className="absolute top-full left-0 w-full bg-white dark:bg-gray-900 shadow-md md:hidden">
+            <ul className="flex flex-col p-4 space-y-2">
+              <li><NavLink to={'/'} className="block py-2 px-3 text-gray-900 hover:bg-gray-200 dark:text-white">Home</NavLink></li>
+              <li><NavLink to={'Products'} className="block py-2 px-3 text-gray-900 hover:bg-gray-200 dark:text-white">Products</NavLink></li>
+              <li><NavLink to={'categories'} className="block py-2 px-3 text-gray-900 hover:bg-gray-200 dark:text-white">Categories</NavLink></li>
+              <li><NavLink to={'brands'} className="block py-2 px-3 text-gray-900 hover:bg-gray-200 dark:text-white">Brands</NavLink></li>
+              <li><NavLink to={'wishlist'} className="block py-2 px-3 text-gray-900 hover:bg-gray-200 dark:text-white">Wishlist</NavLink></li>
+              
+              <li>
+                <NavLink to={'Cart'} className="relative text-gray-900">
+                  <AiOutlineShoppingCart className='text-3xl hidden md:block' />
+                  <span className='block md:hidden py-2 px-3 text-gray-900 hover:bg-gray-200 dark:text-white'>Cart</span>
+                </NavLink>
+              </li>
+              <li><NavLink onClick={logoutUser} className="block md:hidden py-2 px-3 text-gray-900 hover:bg-gray-200 dark:text-white">Sign Out</NavLink></li>
+            </ul>
+          </div>
+        ) : (
+          isMenuOpen && (
+            <div className="absolute top-full left-0 w-full bg-white dark:bg-gray-900 shadow-md md:hidden">
+              <ul className="flex flex-col p-4 space-y-2">
+                <li>
+                  <NavLink to={'Register'} className="block py-2 px-3 text-gray-900 hover:bg-gray-200 dark:text-white">Register</NavLink>
+                </li>
+              </ul>
+            </div>
+          )
+        )}
+
         <div className="hidden md:flex space-x-6">
           <NavLink to={'/'} className="text-gray-900 hover:text-green-700 dark:text-white">Home</NavLink>
           <NavLink to={'Products'} className="text-gray-900 hover:text-green-700 dark:text-white">Products</NavLink>
           <NavLink to={'categories'} className="text-gray-900 hover:text-green-700 dark:text-white">Categories</NavLink>
           <NavLink to={'brands'} className="text-gray-900 hover:text-green-700 dark:text-white">Brands</NavLink>
           <NavLink to={'wishlist'} className="text-gray-900 hover:text-green-700 dark:text-white">Wishlist</NavLink>
-          
         </div>
-
-        {isMenuOpen && (
-          <div className="absolute top-full left-0 w-full bg-white dark:bg-gray-900 shadow-md md:hidden">
-  <ul className="flex flex-col p-4 space-y-2">
-    <li><NavLink to={'/'} className="block py-2 px-3 text-gray-900 hover:bg-gray-200 dark:text-white">Home</NavLink></li>
-    <li><NavLink to={'Products'} className="block py-2 px-3 text-gray-900 hover:bg-gray-200 dark:text-white">Products</NavLink></li>
-    <li><NavLink to={'categories'} className="block py-2 px-3 text-gray-900 hover:bg-gray-200 dark:text-white">Categories</NavLink></li>
-    <li><NavLink to={'brands'} className="block py-2 px-3 text-gray-900 hover:bg-gray-200 dark:text-white">Brands</NavLink></li>
-    <li><NavLink to={'wishlist'} className="block py-2 px-3 text-gray-900 hover:bg-gray-200 dark:text-white">Wishlist</NavLink></li>
-    <li>
-      <NavLink to={'Cart'} className="relative text-gray-900">
-        <AiOutlineShoppingCart className='text-3xl hidden md:block' />
-        <span className='block md:hidden py-2 px-3 text-gray-900 hover:bg-gray-200 dark:text-white'>Cart</span>
-      </NavLink>
-    </li>
-  </ul>
-</div>
-        )}
 
         <div className="hidden md:flex items-center space-x-4">
           <a href="#" className="text-blue-700"><FaFacebook /></a>
@@ -89,7 +100,7 @@ export default function Navbar() {
         </div>
       </div>
     </nav>
-  )
+  );
 }
 
 
