@@ -22,8 +22,7 @@ import { Toaster } from './../node_modules/react-hot-toast/src/components/toaste
 import CheckOut from './Pages/CheckOut/CheckOut';
 import AllOrders from './Pages/AllOrders/AllOrders';
 import WishListContextProvider from './Context/WishListContext';
-import WishList from './Pages/WishList/wishList';
-
+import WishList from './Pages/WishList/WishList';
 
 
 export default function App() {
