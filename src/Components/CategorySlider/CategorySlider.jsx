@@ -77,7 +77,7 @@ export default function CategorySlider() {
               className="w-full h-[320px] object-cover rounded-lg"
               alt={Category.name}
             />
-            <h4 className="mt-3 text-center font-semibold text-gray-800">
+            <h4 className="mt-3 mb-3 text-center font-semibold text-gray-800">
               {Category.name}
             </h4>
           </div>
