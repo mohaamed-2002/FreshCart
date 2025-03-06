@@ -62,7 +62,7 @@ async function handleSubmit(data) {
         }, []);
 
   return (
-    <div className=" dark:bg-gray-900 w-1/2 mx-auto bg-gray-50 shadow p-3 my-3">
+    <div className="dark:bg-gray-900 w-full md:w-1/2 mx-auto bg-gray-50 shadow p-3 my-3">
         <h5 className="mb-4 font-bold text-2xl">CheckOut</h5>
             <form onSubmit={formik.handleSubmit}>
           <div className="mb-5">

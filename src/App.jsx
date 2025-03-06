@@ -23,7 +23,10 @@ import CheckOut from './Pages/CheckOut/CheckOut';
 import AllOrders from './Pages/AllOrders/AllOrders';
 import WishListContextProvider from './Context/WishListContext';
 import WishList from './Pages/WishList/WishList';
+import { QueryClientProvider ,QueryClient } from '@tanstack/react-query';
 
+
+const query = new QueryClient();
 
 export default function App() {
 
@@ -46,7 +49,7 @@ export default function App() {
         { path: "checkout", element: (<ProtectedRoutes><CheckOut /></ProtectedRoutes>) },
         { path: "allorders", element: (<ProtectedRoutes><AllOrders /></ProtectedRoutes>) },
         { path: "wishlist", element: (<ProtectedRoutes><WishList /></ProtectedRoutes>) },
-        
+
 
 
         { path: "Login", element: <Login /> },
@@ -61,24 +64,28 @@ export default function App() {
 
   return (
 
-<TokenContextProvider>
-      <CartContextProvider>
-        <WishListContextProvider>
+    <QueryClientProvider client={query}>
 
-        <Offline>
-        {' '}
-        <div className='offline fixed bottom-2 right-4 bg-green-100 p-3 font-semibold rounded z-50'>
-          <CiWifiOff className='inline mx-3 text-xl' />
-          You Are Now Offline!
-        </div>
-      </Offline>
-      <Toaster/>
+      <TokenContextProvider>
+        <CartContextProvider>
+          <WishListContextProvider>
 
-      <RouterProvider router={routes}></RouterProvider>
-        </WishListContextProvider>
+            <Offline>
+              {' '}
+              <div className='offline fixed bottom-2 right-4 bg-green-100 p-3 font-semibold rounded z-50'>
+                <CiWifiOff className='inline mx-3 text-xl' />
+                You Are Now Offline!
+              </div>
+            </Offline>
+            <Toaster />
 
-      </CartContextProvider>
-    </TokenContextProvider>
+            <RouterProvider router={routes}></RouterProvider>
+          </WishListContextProvider>
+
+        </CartContextProvider>
+      </TokenContextProvider>
+
+    </QueryClientProvider>
 
 
 

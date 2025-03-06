@@ -24,6 +24,10 @@ body{
     color: var(--rating-color);
 }
 
+.center {
+    @apply flex flex-wrap items-center justify-center;
+
+}
 .slider{
     .slick-dots {
         bottom: -30px;
